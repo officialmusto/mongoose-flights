@@ -1,6 +1,3 @@
-<%- include('../partials/html-head') %>
-<%- include('../partials/nav') %>
-
 <main>
   <h1><%= title %></h1>
   <section>
@@ -8,8 +5,15 @@
       <a href="/flights/<%= flight._id %>/edit">
         <button>Edit Flight</button>
       </a>
-      <div>Flights: </div>
+      <form id="new-ticket-form" action="/flights/<%= flight._id %>/tickets" method="POST">
+        <label for="seat">Seat:</label>
+        <input type="text" name="seat" id="seat-input">
+        <label for="price">Price:</label>
+        <input type="number" name="price" id="price-input">
+        <button type="submit">Add Ticket</button>
+      </form>
     </div>
+    <div>Flights: </div>
     <div>Airline: </div>
     <div><%= flight.airline %></div>
     <div>Airport: </div>
@@ -18,7 +22,26 @@
     <div><%= flight.flightNo %></div>
     <div>Departure Date: </div>
     <div><%= flight.departs %></div>
-
-    <a href="/flights">GO BACK</a>
-
-<%- include('../partials/footer') %>
+    
+    <a href="/flights/<%= flight._id %>/meals/new">Add Meal</a>
+    
+    <div>Tickets:</
+      <h1><%= flight.airline %> <%= flight.flightNo %></h1>
+      <p>Departs: <%= flight.departs.toLocaleDateString() %></p>
+      
+      <h2>Meals:</h2>
+      <ul>
+        <% flight.meals.forEach((meal) => { %>
+          <li><%= meal.name %> (<%= meal.price %>)</li>
+        <% }) %>
+      </ul>
+      
+      <form action="/flights/<%= flight._id %>/addMeal" method="POST">
+        <select name="meal">
+          <% meals.forEach((meal) => { %>
+            <option value="<%= meal._id %>"><%= meal.name %> (<%= meal.price %>)</option>
+          <% }) %>
+        </select>
+        <button type="submit">Add Meal</button>
+      </form>
+      

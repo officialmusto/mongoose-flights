@@ -3,54 +3,51 @@
 
 <main>
   <h1><%= title %></h1>
-  <form 
-    id="new-form" 
-    action="/flights/<%= flight._id %>?_method=PUT"
-    method="POST"
-  >
-    <label for="airline">Airline:</label>
-    <select name="airline" value="<%= flight.airline %>">
-      <option value="American">American</option>
-      <option value="Southwest">Southwest</option>
-      <option value="United">United</option>
-      <option value="Emirates">Emirates</option>
-      <option value="Delta">Delta</option>
-      </select>
+  <section>
+    <div>
+      <a href="/flights/<%= flight._id %>/edit">
+        <button>Edit Flight</button>
+      </a>
+      <div>Flights: </div>
+    </div>
+    <div>Airline: </div>
+    <div><%= flight.airline %></div>
+    <div>Airport: </div>
+    <div><%= flight.airport %></div>
+    <div>Flight Number: </div>
+    <div><%= flight.flightNo %></div>
+    <div>Departure Date: </div>
+    <div><%= flight.departs %></div>
 
+    <div>Tickets:</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Seat</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% flight.tickets.forEach(function(ticket) { %>
+          <tr>
+            <td><%= ticket.seat %></td>
+            <td><%= ticket.price %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
 
-  <label for="airport">Airport:</label>
-  <select name="airport" value="<%= flight.airport %>">
-    <option value="AUS">AUS</option>
-    <option value="DFW">DFW</option>
-    <option value="LAX">LAX</option>
-    <option value="SAN">SAN</option>
-    <option value="CLE">CLE</option>
-    <option value="HUS">HUS</option>
-    <option value="WAS">WAS</option>
-    <option value="DEN">DEN</option>
-    </select>
+    <form method="POST" action="/flights/<%= flight._id %>/tickets">
+      <h2>Add Ticket</h2>
+      <label for="seat">Seat:</label>
+      <input type="text" id="seat" name="seat" required>
+      <label for="price">Price:</label>
+      <input type="number" id="price" name="price" min="0" required>
+      <button type="submit">Add Ticket</button>
+    </form>
 
-
-    <label for="flightNo">Flight #:</label>
-    <input 
-    type="number"
-    name="flightNo"
-    min="1"
-    max="9999"
-    value="<%= flight.flightNo %>"
-    id="flightNo"
-    >
-    <label for="departs">Departure Date:</label>
-    <input 
-      type="text"
-      name="departs"
-      id="departs"
-      value="<%= flight.departs %>"
-    >
-    <a href="/flights/<%= flight._id %>/edit">
-      <button>Save Flight</button>
-    </a>
-  </form>
+    <a href="/flights">GO BACK</a>
+  </section>
 </main>
 
-<%- include("../partials/footer") %>
+<%- include('../partials/footer') %>
