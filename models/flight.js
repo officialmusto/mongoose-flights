@@ -8,7 +8,7 @@ const flightSchema = new Schema({
   flightNo: {type: Number, required: true, min: 10, max: 9999},
   departs: {
     type: Date,
-    format: "DD.MM.YYYY",
+    format: "DD/MM/YYYY",
     default: function() {
       const now = new Date()
       const oneYearFromNow = new Date(now.getFullYear() + 1, now.getMonth(), now.getDate())

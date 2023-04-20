@@ -1,5 +1,4 @@
 <%- include('../partials/html-head') %>
-<link rel="stylesheet" href="/stylesheets/flights/show.css" />
 <%- include('../partials/nav') %>
 
 <main>
@@ -7,17 +6,18 @@
   <section>
     <div>Flights: </div>
 		<div>
-      <%= flights.airline %> 
-      <a href="/flights/<%= flights._id %>/edit">
+      <%= flight.airline %> 
+      <a href="/flights/<%= flight._id %>/edit">
         <button>Edit Flight</button>
       </a>
     </div>
-    <div>Release Year: </div>
-    <div><%= flight.releaseYear %></div>
-    <div>Rating: </div>
-    <div><%= flight.mpaaRating %></div>
-    <div>Now Showing: </div>
-    <div><%= flight.nowShowing ? 'Yes' : 'Nope' %>
-    </div>
+    <div>Airline: </div>
+    <div><%= flight.airline %></div>
+    <div>Airport </div>
+    <div><%= flight.airport %></div>
+    <div>Flight Number: </div>
+    <div><%= flight.flightNo %></div>
+
+    <a href="/flights">GO BACK</a>
 
 <%- include('../partials/footer') %>
