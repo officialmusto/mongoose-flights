@@ -74,7 +74,9 @@ function update(req, res) {
   }
   Flight.findByIdAndUpdate(req.params.flightId, req.body, {new: true})
   .then(flight => {
-    res.render('flights/index')
+    res.redirect('/flights/index', {
+      title: 'All Flights'
+    })
   })
   .catch(err => {
     console.log(err)

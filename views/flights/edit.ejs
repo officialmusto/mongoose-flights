@@ -5,11 +5,11 @@
   <h1><%= title %></h1>
   <form 
     id="new-form" 
-    action="/flighta/<%= flight._id %>?_method=PUT" 
+    action="/flights/<%= flight._id %>?_method=PUT"
     method="POST"
   >
     <label for="airline">Airline:</label>
-    <select value="<%= flight.airline %>">
+    <select name="airline" value="<%= flight.airline %>">
       <option value="American">American</option>
       <option value="Southwest">Southwest</option>
       <option value="United">United</option>
@@ -19,7 +19,7 @@
 
 
   <label for="airport">Airport:</label>
-  <select value="<%= flight.airport %>">
+  <select name="airport" value="<%= flight.airport %>">
     <option value="AUS">AUS</option>
     <option value="DFW">DFW</option>
     <option value="LAX">LAX</option>
@@ -47,7 +47,9 @@
       id="departs"
       value="<%= flight.departs %>"
     >
-    <button type="submit">Save Movie</button>
+    <a href="/flights/<%= flight._id %>/edit">
+      <button>Save Flight</button>
+    </a>
   </form>
 </main>
 
