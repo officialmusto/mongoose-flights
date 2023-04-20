@@ -1,0 +1,54 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %></h1>
+  <form 
+    id="new-form" 
+    action="/flighta/<%= flight._id %>?_method=PUT" 
+    method="POST"
+  >
+    <label for="airline">Airline:</label>
+    <select value="<%= flight.airline %>">
+      <option value="American">American</option>
+      <option value="Southwest">Southwest</option>
+      <option value="United">United</option>
+      <option value="Emirates">Emirates</option>
+      <option value="Delta">Delta</option>
+      </select>
+
+
+  <label for="airport">Airport:</label>
+  <select value="<%= flight.airport %>">
+    <option value="AUS">AUS</option>
+    <option value="DFW">DFW</option>
+    <option value="LAX">LAX</option>
+    <option value="SAN">SAN</option>
+    <option value="CLE">CLE</option>
+    <option value="HUS">HUS</option>
+    <option value="WAS">WAS</option>
+    <option value="DEN">DEN</option>
+    </select>
+
+
+    <label for="flightNo">Flight #:</label>
+    <input 
+    type="number"
+    name="flightNo"
+    min="1"
+    max="9999"
+    value="<%= flight.flightNo %>"
+    id="flightNo"
+    >
+    <label for="departs">Departure Date:</label>
+    <input 
+      type="text"
+      name="departs"
+      id="departs"
+      value="<%= flight.departs %>"
+    >
+    <button type="submit">Save Movie</button>
+  </form>
+</main>
+
+<%- include("../partials/footer") %>

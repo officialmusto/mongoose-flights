@@ -11,14 +11,22 @@ router.get('/', flightsCtrl.index)
 router.get('/new', flightsCtrl.new)
 
 // GET localhost:3000/flights/:flightsId
-router.get('/:movieId', flightsCtrl.show)
+router.get('/:flightId', flightsCtrl.show)
 
+// GET localhost:3000/flights/:flightsId/edit
+router.get('/:flightId/edit', flightsCtrl.edit)
 
 //POST METHODS:
-// POST localhost:3000/movies
+// POST localhost:3000/flights
 router.post('/', flightsCtrl.create)
 
-//GET localhost:3000/flights/:flightId/
-// router.get('/:flightId', flightsCtrl.show)
+//POST localhost:3000/:flightId/
+router.delete('/:flightId', flightsCtrl.delete)
+
+// GET localhost:3000/movies/:movieId/edit
+router.get('/:flightId/edit', flightsCtrl.edit)
+
+// PUT localhost:3000/flights/:flightId
+router.put('/flights/:flightId', flightsCtrl.update)
 
 export { router }
