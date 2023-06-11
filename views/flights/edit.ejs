@@ -1,53 +1,29 @@
 <%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/flights/forms.css" />
 <%- include('../partials/nav') %>
-
 <main>
   <h1><%= title %></h1>
-  <section>
-    <div>
-      <a href="/flights/<%= flight._id %>/edit">
-        <button>Edit Flight</button>
-      </a>
-      <div>Flights: </div>
-    </div>
-    <div>Airline: </div>
-    <div><%= flight.airline %></div>
-    <div>Airport: </div>
-    <div><%= flight.airport %></div>
-    <div>Flight Number: </div>
-    <div><%= flight.flightNo %></div>
-    <div>Departure Date: </div>
-    <div><%= flight.departs %></div>
-
-    <div>Tickets:</div>
-    <table>
-      <thead>
-        <tr>
-          <th>Seat</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% flight.tickets.forEach(function(ticket) { %>
-          <tr>
-            <td><%= ticket.seat %></td>
-            <td><%= ticket.price %></td>
-          </tr>
-        <% }) %>
-      </tbody>
-    </table>
-
-    <form method="POST" action="/flights/<%= flight._id %>/tickets">
-      <h2>Add Ticket</h2>
-      <label for="seat">Seat:</label>
-      <input type="text" id="seat" name="seat" required>
-      <label for="price">Price:</label>
-      <input type="number" id="price" name="price" min="0" required>
-      <button type="submit">Add Ticket</button>
-    </form>
-
-    <a href="/flights">GO BACK</a>
-  </section>
+  <form id="new-form" action="/flights" method="POST">
+    
+    <label for="airline-input">Airline:</label>
+    <select name="airline" value="<%= flight.airline %>" id="airline-input">
+        <option value="American">American</option>
+        <option value="Southwest">Southwest</option>
+        <option value="United">United</option>
+      </select>
+    <label for="airline-input">Airline:</label>
+    <select name="airport" value="<%= flight.airport %>" id="airport-input">
+          <option value="AUS">AUS</option>
+          <option value="DFW">DFW</option>
+          <option value="DEN">DEN</option>
+          <option value="LAX">LAX</option>
+          <option value="SAN">SAN</option>
+        </select>
+    <label for="flightNo-input">Flight Number:</label>
+    <input type="number" name="flightNo" value="<%= flight.flightNo %>" id="flightNo-input">
+    <label for="departs-input">Departs:</label>
+    <input type="date" name="departs" value="<%= flight.departs %>" id="departs-input">
+    <button type="submit">Edit Flight</button>
+  </form>
 </main>
-
-<%- include('../partials/footer') %>
+<%- include("../partials/footer") %>

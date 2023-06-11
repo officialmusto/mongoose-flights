@@ -23,13 +23,15 @@ router.post('/', flightsCtrl.create)
 //POST localhost:3000/:flightId/
 router.delete('/:flightId', flightsCtrl.delete)
 
-
 // PUT localhost:3000/flights/:flightId
 router.put('/:flightId', flightsCtrl.update)
 
 //PUT localhost:3000/:flightId/tickets
 router.post('/:flightId/tickets', flightsCtrl.addTicket)
 
+//DELETE localhost:3000/:flightId/tickets
+router.delete('/:flightId/tickets/:ticketId', flightsCtrl.deleteTicket)
 
+router.post('/:flightId/meals', flightsCtrl.addToMeals)
 
 export { router }
